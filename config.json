@@ -10,8 +10,7 @@
 	"backup": {
 		"checkFrequencySeconds": 10, 
 		"directory": "/BackupDigitalOcean_duamserver1",
-		"filesToFind": ["juvatv_morfus", "porky", "redis", "scripty"],
-		"filesToFind2": ["porky", "redis", "scripty"]
+		"filesToFind": ["juvatv_morfus", "porky", "redis", "scripty"]
 	},
 	"loggly": {
 		"token": "710dc58a-fe43-47a0-8b00-4580a35b86c4",
