@@ -1,0 +1,22 @@
+{
+	"dropbox": {
+		"auth": {
+				"key": "zfptnrm6eel0wx6",
+				"secret": "8yli64q51y7a1k5",
+				"token": "VFo849bxEYcAAAAAAAAEFkySP00ETbEblSpn9P8JJNLJEsRLgWzQCNZ4DsjT0VAI",
+				"sandbox": false
+		}
+	},
+	"backup": {
+		"checkFrequencySeconds": 10, 
+		"directory": "/BackupDigitalOcean_duamserver1",
+		"filesToFind": ["juvatv_morfus", "porky", "redis", "scripty"],
+		"filesToFind2": ["porky", "redis", "scripty"]
+	},
+	"loggly": {
+		"token": "710dc58a-fe43-47a0-8b00-4580a35b86c4",
+		"subdomain": "luispablo",
+		"tags": ["DUAM-backup-check"],
+		"json": true
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ledBlink",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@luispablo",
+  "license": "ISC",
+  "dependencies": {
+    "dropbox": "^0.10.3",
+    "moment": "^2.11.0",
+    "onoff": "^1.0.3",
+    "promise": "^7.1.1",
+    "winston": "^2.1.1",
+    "winston-loggly": "^1.2.0"
+  }
+}
