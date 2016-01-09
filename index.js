@@ -8,24 +8,29 @@ winston.add(winston.transports.Loggly, config.loggly);
 
 var dropboxChecker = require("./dropboxChecker");
 
-setInterval(function () {
+function check () {
 	winston.log("info", "Checking...");
 	dropboxChecker.check(config)
-						.then(function (isBackupOK) {
-							winston.log("info", "Result of check: "+ isBackupOK);
-							
-							ledSignal.stop();
+					.then(function (isBackupOK) {
+						winston.log("info", "Result of check: "+ isBackupOK);
+						
+						ledSignal.stop();
 
-							if (isBackupOK) ledSignal.ok();
-							else ledSignal.alert();
-						})
-						.catch(function (error) {
-							winston.log("error", error);
-							
-							ledSignal.stop();
-							ledSignal.alert();
-						});
-}, config.backup.checkFrequencySeconds * 1000);
+						if (isBackupOK) ledSignal.ok();
+						else ledSignal.alert();
+					})
+					.catch(function (error) {
+						winston.log("error", error);
+						
+						ledSignal.stop();
+						ledSignal.alert();
+					});
+}
+
+var checkFrequencyMillis = config.backup.checkFrequencySeconds * 1000;
+
+check(); // First check
+setInterval(check, checkFrequencyMillis); // Subsequent checks
  
 function exit (ledSignal) {
 	ledSignal.stop();
