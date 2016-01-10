@@ -3,7 +3,7 @@ var moment = require("moment");
 var Promise = require('promise');
 
 var dropboxChecker = {
-	check: function (config) {
+	check: function (config, winston) {
 		return new Promise(function (resolve, reject) {
 			var client = new dropbox.Client(config.dropbox.auth);
 
@@ -14,10 +14,11 @@ var dropboxChecker = {
 					var visibleEntries = entries.filter(function (entry) {
 						return entry.indexOf('.') !== 0;
 					});
+					winston.log("info", "Read the following entries from Dropbox: "+ visibleEntries.join(", "));
 
 					var metadatas = [];
 
-					visibleEntries.forEach(function (entry, index) {			
+					visibleEntries.forEach(function (entry, index) {
 						client.stat(config.backup.directory +"/"+ entry, function (error, metadata) {
 							if (error) {
 								reject(error);
@@ -33,6 +34,8 @@ var dropboxChecker = {
 								}).map(function (metadata) {
 									return metadata.name;
 								});
+								winston.log("info", "The entries from yesterday are: "+ yesterdayMetadatas.join(", "));
+								winston.log("info", "Comparing yesterday entries to: "+ config.backup.filesToFind.join(", "));
 
 								var result = config.backup.filesToFind.every(function (fileToFind) {
 									return yesterdayMetadatas.some(function (metadata) {

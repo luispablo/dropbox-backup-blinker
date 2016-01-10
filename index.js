@@ -9,8 +9,8 @@ winston.add(winston.transports.Loggly, config.loggly);
 var dropboxChecker = require("./dropboxChecker");
 
 function check () {
-	winston.log("info", "Checking...");
-	dropboxChecker.check(config)
+	winston.log("info", "Starting check");
+	dropboxChecker.check(config, winston)
 					.then(function (isBackupOK) {
 						winston.log("info", "Result of check: "+ isBackupOK);
 						
