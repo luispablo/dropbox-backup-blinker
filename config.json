@@ -8,7 +8,7 @@
 		}
 	},
 	"backup": {
-		"checkFrequencySeconds": 10, 
+		"checkFrequencySeconds": 43200, 
 		"directory": "/BackupDigitalOcean_duamserver1",
 		"filesToFind": ["juvatv_morfus", "porky", "redis", "scripty"]
 	},
